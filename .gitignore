@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Source/CargoSystem/CargoSystem.Web/CargoSystem.Web/bin
+/Source/CargoSystem/CargoSystem.Data/bin/Debug
+/Source/CargoSystem/CargoSystem.Data/CargoSystem.Data.Common/bin/Debug
+/Source/CargoSystem/CargoSystem.Data/CargoSystem.Data.Common/obj/Debug
+/Source/CargoSystem/CargoSystem.Data/CargoSystem.Data.Models/bin/Debug
+/Source/CargoSystem/CargoSystem.Data/CargoSystem.Data.Models/obj/Debug
+/Source/CargoSystem/CargoSystem.Web/CargoSystem.Web/obj/Debug
