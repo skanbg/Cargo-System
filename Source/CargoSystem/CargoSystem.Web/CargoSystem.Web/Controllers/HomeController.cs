@@ -14,11 +14,6 @@ namespace CargoSystem.Web.Controllers
     {
         private IRepository<Package> packages;
 
-        public HomeController()
-            : this(new GenericRepository<Package>(new ApplicationDbContext()))
-        {
-        }
-
         public HomeController(IRepository<Package> packages)
         {
             this.packages = packages;
