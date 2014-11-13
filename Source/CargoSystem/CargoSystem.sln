@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{0A9DA2F4-CF1C-4FD8-A33A-24EF0A94603E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{9CC83178-163F-4206-B567-83591F210E1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{D52F54B3-0937-430B-9E41-1371147F54F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoSystem.Common", "CargoSystem.Common\CargoSystem.Common.csproj", "{DD6AE1C8-625A-459C-882C-FDEF5F0D4DDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoSystem.Data", "CargoSystem.Data\CargoSystem.Data.csproj", "{F16C3EC6-DB8A-4FC4-B784-E437E128A60B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoSystem.Data.Models", "CargoSystem.Data\CargoSystem.Data.Models\CargoSystem.Data.Models.csproj", "{95F2EE85-2433-48CD-B2C0-91908307DF09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{349830A3-E1F0-474F-A281-227E1D1ADA06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoSystem.Web", "CargoSystem.Web\CargoSystem.Web\CargoSystem.Web.csproj", "{FD7EECFA-C1E7-43AE-8E7E-AA6757B9BE2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD6AE1C8-625A-459C-882C-FDEF5F0D4DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6AE1C8-625A-459C-882C-FDEF5F0D4DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6AE1C8-625A-459C-882C-FDEF5F0D4DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6AE1C8-625A-459C-882C-FDEF5F0D4DDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F16C3EC6-DB8A-4FC4-B784-E437E128A60B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F16C3EC6-DB8A-4FC4-B784-E437E128A60B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F16C3EC6-DB8A-4FC4-B784-E437E128A60B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F16C3EC6-DB8A-4FC4-B784-E437E128A60B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95F2EE85-2433-48CD-B2C0-91908307DF09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95F2EE85-2433-48CD-B2C0-91908307DF09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95F2EE85-2433-48CD-B2C0-91908307DF09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95F2EE85-2433-48CD-B2C0-91908307DF09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7EECFA-C1E7-43AE-8E7E-AA6757B9BE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7EECFA-C1E7-43AE-8E7E-AA6757B9BE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7EECFA-C1E7-43AE-8E7E-AA6757B9BE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7EECFA-C1E7-43AE-8E7E-AA6757B9BE2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F16C3EC6-DB8A-4FC4-B784-E437E128A60B} = {9CC83178-163F-4206-B567-83591F210E1C}
+		{95F2EE85-2433-48CD-B2C0-91908307DF09} = {9CC83178-163F-4206-B567-83591F210E1C}
+		{FD7EECFA-C1E7-43AE-8E7E-AA6757B9BE2D} = {0A9DA2F4-CF1C-4FD8-A33A-24EF0A94603E}
+	EndGlobalSection
+EndGlobal
