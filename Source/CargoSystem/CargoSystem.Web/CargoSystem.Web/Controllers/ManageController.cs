@@ -24,12 +24,14 @@ namespace CargoSystem.Web.Controllers
         }
 
         private ApplicationUserManager _userManager;
+
         public ApplicationUserManager UserManager
         {
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
+
             private set
             {
                 _userManager = value;
@@ -66,6 +68,7 @@ namespace CargoSystem.Web.Controllers
         {
             var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
+
             return View(linkedAccounts);
         }
 
@@ -84,12 +87,14 @@ namespace CargoSystem.Web.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                 }
+
                 message = ManageMessageId.RemoveLoginSuccess;
             }
             else
             {
                 message = ManageMessageId.Error;
             }
+
             return RedirectToAction("ManageLogins", new { Message = message });
         }
 
@@ -110,6 +115,7 @@ namespace CargoSystem.Web.Controllers
             {
                 return View(model);
             }
+
             // Generate the token and send it
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
             if (UserManager.SmsService != null)
@@ -121,6 +127,7 @@ namespace CargoSystem.Web.Controllers
                 };
                 await UserManager.SmsService.SendAsync(message);
             }
+
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
 
@@ -135,6 +142,7 @@ namespace CargoSystem.Web.Controllers
             {
                 await SignInAsync(user, isPersistent: false);
             }
+
             return RedirectToAction("Index", "Manage");
         }
 
@@ -149,6 +157,7 @@ namespace CargoSystem.Web.Controllers
             {
                 await SignInAsync(user, isPersistent: false);
             }
+
             return RedirectToAction("Index", "Manage");
         }
 
@@ -171,6 +180,7 @@ namespace CargoSystem.Web.Controllers
             {
                 return View(model);
             }
+
             var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber, model.Code);
             if (result.Succeeded)
             {
@@ -179,10 +189,12 @@ namespace CargoSystem.Web.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                 }
+
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "Failed to verify phone");
+
             return View(model);
         }
 
@@ -195,11 +207,13 @@ namespace CargoSystem.Web.Controllers
             {
                 return RedirectToAction("Index", new { Message = ManageMessageId.Error });
             }
+
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
                 await SignInAsync(user, isPersistent: false);
             }
+
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
@@ -220,6 +234,7 @@ namespace CargoSystem.Web.Controllers
             {
                 return View(model);
             }
+
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
@@ -228,9 +243,12 @@ namespace CargoSystem.Web.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                 }
+
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
+
             AddErrors(result);
+
             return View(model);
         }
 
@@ -257,8 +275,10 @@ namespace CargoSystem.Web.Controllers
                     {
                         await SignInAsync(user, isPersistent: false);
                     }
+
                     return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordSuccess });
                 }
+
                 AddErrors(result);
             }
 
@@ -279,9 +299,11 @@ namespace CargoSystem.Web.Controllers
             {
                 return View("Error");
             }
+
             var userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
             var otherLogins = AuthenticationManager.GetExternalAuthenticationTypes().Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider)).ToList();
             ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1;
+
             return View(new ManageLoginsViewModel
             {
                 CurrentLogins = userLogins,
@@ -308,7 +330,9 @@ namespace CargoSystem.Web.Controllers
             {
                 return RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
             }
+
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
+
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
@@ -345,6 +369,7 @@ namespace CargoSystem.Web.Controllers
             {
                 return user.PasswordHash != null;
             }
+
             return false;
         }
 
@@ -355,6 +380,7 @@ namespace CargoSystem.Web.Controllers
             {
                 return user.PhoneNumber != null;
             }
+
             return false;
         }
 
