@@ -8,11 +8,21 @@
 
     public class Speditor : User
     {
+        private ICollection<Offer> proposedOffers;
+
         private ICollection<Carrier> carriers;
 
         public Speditor()
         {
-            this.proposedOffers = new HashSet<й>();
+            this.proposedOffers = new HashSet<Offer>();
+            this.carriers = new HashSet<Carrier>();
+        }
+
+        public virtual ICollection<Offer> ProposedOffers
+        {
+            get { return this.proposedOffers; }
+
+            set { this.proposedOffers = value; }
         }
 
         public virtual ICollection<Carrier> Carriers
