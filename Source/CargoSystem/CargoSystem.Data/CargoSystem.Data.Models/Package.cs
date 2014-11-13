@@ -9,18 +9,24 @@
     {
         public Package()
         {
-            this.Id = new Guid();
             this.PackageState = PackageState.WaitingForBargain;
         }
 
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        public Guid SenderId { get; set; }
+        public Guid SpeditorId { get; set; }
 
-        public User Sender { get; set; }
+        public virtual Speditor Speditor { get; set; }
 
+        [Index]
         public PackageState PackageState { get; set; }
+
+        [MaxLength(100)]
+        public string Name { get; set; }
+
+        [MaxLength(500)]
+        public string Description { get; set; }
 
         [Index]
         public bool IsDeleted { get; set; }

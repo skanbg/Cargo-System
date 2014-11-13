@@ -52,8 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Carrier.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="PackageState.cs" />
+    <Compile Include="Speditor.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
