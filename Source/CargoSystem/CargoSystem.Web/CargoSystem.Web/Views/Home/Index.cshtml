@@ -1,11 +1,11 @@
-﻿@model IEnumerable<CargoSystem.Data.Models.Package>
+﻿@model IEnumerable<CargoSystem.Web.ViewModels.IndexCarrierViewModel>
 @{
     ViewBag.Title = "Home Page";
 }
 
-@foreach (var package in Model)
+@foreach (var carrier in Model)
 {
-    @package.Name
+    @carrier.Email
 }
 
 @*<div class="jumbotron">

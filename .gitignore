@@ -9,3 +9,8 @@
 /Source/CargoSystem/CargoSystem.Data/CargoSystem.Data.Models/bin/Debug
 /Source/CargoSystem/CargoSystem.Data/CargoSystem.Data.Models/obj/Debug
 /Source/CargoSystem/CargoSystem.Web/CargoSystem.Web/obj/Debug
+/Source/CargoSystem/CargoSystem.Common/bin/Debug
+/Source/CargoSystem/CargoSystem.Common/obj/Debug
+/Source/CargoSystem/CargoSystem.Data/obj/Debug
+/Source/CargoSystem/CargoSystem.Web/CargoSystem.Web.Infrastructure/bin/Debug
+/Source/CargoSystem/CargoSystem.Web/CargoSystem.Web.Infrastructure/obj/Debug
