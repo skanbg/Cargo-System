@@ -1,22 +1,20 @@
 ﻿namespace CargoSystem.Data.Models
 {
+    using CargoSystem.Data.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Country
+    public class Country : IAuditInfo, IDeletableEntity
     {
         private ICollection<Package> packages;
-
-        private ICollection<Carrier> carriers;
-
-        private ICollection<Speditor> speditors;
+        private ICollection<User> users;
 
         public Country()
         {
             this.packages = new HashSet<Package>();
-            this.carriers = new HashSet<Carrier>();
-            this.speditors = new HashSet<Speditor>();
+            this.users = new HashSet<User>();
         }
 
         [Key]
@@ -35,18 +33,15 @@
             set { this.packages = value; }
         }
 
-        public virtual ICollection<Carrier> Carriers
-        {
-            get { return this.carriers; }
+        [Index]
+        public bool IsDeleted { get; set; }
 
-            set { this.carriers = value; }
-        }
+        public DateTime? DeletedOn { get; set; }
 
-        public virtual ICollection<Speditor> Speditors
-        {
-            get { return this.speditors; }
+        public DateTime CreatedOn { get; set; }
 
-            set { this.speditors = value; }
-        }
+        public bool PreserveCreatedOn { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
     }
 }

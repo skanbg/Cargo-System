@@ -1,30 +1,29 @@
 ﻿namespace CargoSystem.Web.Controllers
 {
     using CargoSystem.Data;
-    using CargoSystem.Data.Common.Repository;
-    using CargoSystem.Data.Models;
-    using CargoSystem.Data.Repositories.Base;
-    using CargoSystem.Web.ViewModels;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
+    using CargoSystem.Web.Infrastructure.Services.Contracts;
+    using CargoSystem.Web.ViewModels.Home;
     using System.Web.Mvc;
-    using AutoMapper.QueryableExtensions;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private IRepository<Carrier> carriers;
+        private IHomeServices homeServices;
 
-        public HomeController(IRepository<Carrier> carriers)
+        public HomeController(ICargoSystemData data, IHomeServices homeServices)
+            : base(data)
         {
-            this.carriers = carriers;
+            this.homeServices = homeServices;
         }
 
         public ActionResult Index()
         {
-            var carriers = this.carriers.All().Project().To<IndexCarrierViewModel>();
-            return View(carriers);
+            var model = new IndexViewModel()
+            {
+                Carriers = this.homeServices.GetLastRegisteredCarriersViewModel(5),
+                Speditors = this.homeServices.GetLastRegisteredSpeditorsViewModel(5)
+            };
+
+            return View(model);
         }
     }
 }

@@ -1,16 +1,15 @@
 ﻿namespace CargoSystem.Data.Models
 {
+    using CargoSystem.Data.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    public class DeclaredRoute
+    public class DeclaredRoute : IAuditInfo, IDeletableEntity
     {
         private ICollection<Offer> offers;
+
         public DeclaredRoute()
         {
             this.offers = new HashSet<Offer>();
@@ -29,12 +28,7 @@
 
         public virtual Vehicle Vehicle { get; set; }
 
-        public virtual Carrier Carrier { get; set; }
-
-        [Index]
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
+        public virtual User Carrier { get; set; }
 
         public virtual ICollection<Offer> Offers
         {
@@ -42,5 +36,16 @@
 
             set { this.offers = value; }
         }
+
+        [Index]
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public bool PreserveCreatedOn { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
     }
 }

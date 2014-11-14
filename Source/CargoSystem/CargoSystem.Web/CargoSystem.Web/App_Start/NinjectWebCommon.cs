@@ -14,6 +14,8 @@ namespace CargoSystem.Web.App_Start
     using System.Data.Entity;
     using CargoSystem.Data.Common.Repository;
     using CargoSystem.Data.Repositories.Base;
+    using CargoSystem.Web.Infrastructure.Services.Contracts;
+    using CargoSystem.Web.Infrastructure.Services;
 
     public static class NinjectWebCommon
     {
@@ -72,6 +74,10 @@ namespace CargoSystem.Web.App_Start
 
             kernel.Bind(typeof(IRepository<>))
                 .To(typeof(GenericRepository<>));
+
+            kernel.Bind<ICargoSystemData>().To<CargoSystemData>();
+
+            kernel.Bind<IHomeServices>().To<HomeServices>();
         }
     }
 }

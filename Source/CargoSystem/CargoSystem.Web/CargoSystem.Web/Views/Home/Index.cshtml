@@ -1,12 +1,46 @@
-﻿@model IEnumerable<CargoSystem.Web.ViewModels.IndexCarrierViewModel>
+﻿@model CargoSystem.Web.ViewModels.Home.IndexViewModel
 @{
     ViewBag.Title = "Home Page";
 }
 
-@foreach (var carrier in Model)
-{
-    @carrier.Email
-}
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Latest Speditors</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    @foreach (var speditor in Model.Speditors)
+                    {
+                        <li class="list-group-item">
+                            <span class="badge">14</span>
+                            @speditor.FirstName
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Latest Carriers</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    @foreach (var carrier in Model.Carriers)
+                    {
+                        <li class="list-group-item">
+                            <span class="badge" title="Vehicles count">@carrier.VehiclesCount</span>
+                            @carrier.FirstName
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 @*<div class="jumbotron">
     <h1>ASP.NET</h1>

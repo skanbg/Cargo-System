@@ -6,6 +6,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
 
     public class ApplicationDbContext : IdentityDbContext<User>
@@ -28,10 +29,8 @@
         public IDbSet<DeclaredRoute> Routes { get; set; }
 
         public IDbSet<Country> Countries { get; set; }
-
-        public IDbSet<Carrier> Carriers { get; set; }
-
-        public IDbSet<Speditor> Speditors { get; set; }
+        
+        public IDbSet<Message> Messages { get; set; }
 
         public IDbSet<Vehicle> Vehicles { get; set; }
 
@@ -81,6 +80,11 @@
                 entity.IsDeleted = true;
                 entry.State = EntityState.Modified;
             }
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

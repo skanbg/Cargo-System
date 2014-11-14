@@ -53,14 +53,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
-    <Compile Include="Carrier.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="DeclaredRoute.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Offer.cs" />
     <Compile Include="OfferStatus.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="PackageState.cs" />
-    <Compile Include="Speditor.cs" />
     <Compile Include="TrailerSize.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

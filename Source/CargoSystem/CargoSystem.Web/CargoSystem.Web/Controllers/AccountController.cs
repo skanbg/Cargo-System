@@ -1,15 +1,17 @@
-﻿using System;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using CargoSystem.Data.Models;
+using CargoSystem.Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using CargoSystem.Web.Models;
-using CargoSystem.Data.Models;
 
 namespace CargoSystem.Web.Controllers
 {
@@ -20,6 +22,8 @@ namespace CargoSystem.Web.Controllers
 
         public AccountController()
         {
+            Mapper.CreateMap<RegisterViewModel, User>();
+            Mapper.CreateMap<RegisterViewModel, User>();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -159,10 +163,20 @@ namespace CargoSystem.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                User user = Mapper.Map<RegisterViewModel, User>(model);
+                user.UserName = model.Email;
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (model.isCarrier)
+                    {
+                        UserManager.AddToRole(user.Id, "Carrier");
+                    }
+                    else
+                    {
+                        UserManager.AddToRole(user.Id, "Speditor");
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

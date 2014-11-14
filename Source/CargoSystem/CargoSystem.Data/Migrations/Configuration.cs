@@ -2,6 +2,7 @@ namespace CargoSystem.Data.Migrations
 {
     using CargoSystem.Data.Models;
     using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -18,9 +19,23 @@ namespace CargoSystem.Data.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
-            if (context.Carriers.Any() || context.Speditors.Any())
+            if (context.Users.Any())
             {
                 return;
+            }
+
+            //context.Configuration.LazyLoadingEnabled = true;
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            if (!roleManager.RoleExists("Carrier"))
+            {
+                var role = new IdentityRole() { Name="Carrier"};
+                roleManager.Create(role);
+            }
+            if (!roleManager.RoleExists("Speditor"))
+            {
+                var role = new IdentityRole() { Name = "Speditor" };
+                roleManager.Create(role);
             }
 
             var countriesToGenerate = 10;
@@ -47,8 +62,9 @@ namespace CargoSystem.Data.Migrations
 
         private void GenerateRoutes(ApplicationDbContext context, int routesToGenerate)
         {
-            var carriers = context.Carriers.OrderBy(c => Guid.NewGuid()).Take(routesToGenerate).ToArray();
+            var carriers = context.Users.OrderBy(c => Guid.NewGuid()).Take(routesToGenerate).ToArray();
             var vehicles = context.Vehicles.OrderBy(c => Guid.NewGuid()).Take(routesToGenerate).ToArray();
+            var countries = context.Countries.OrderBy(c => Guid.NewGuid()).Take(routesToGenerate).ToArray();
 
             for (int i = 0; i < routesToGenerate; i++)
             {
@@ -60,8 +76,8 @@ namespace CargoSystem.Data.Migrations
                     Vehicle = vehicles[i % vehicles.Length],
                     TransportStartDate = randomStartDate,
                     TransportEndDate = randomEndDate,
-                    StartPoint = new Address() { Apartment = "Route start point address " + i },
-                    EndPoint = new Address() { Apartment = "Route end point address " + i }
+                    StartPoint = new Address() { Apartment = "Route start point address " + i, Country = countries[i % countries.Length], Street = "Street " + i, PostCode = "000" + i, Town = "Town " + i },
+                    EndPoint = new Address() { Apartment = "Route end point address " + i, Country = countries[i % countries.Length], Street = "Street " + i, PostCode = "000" + i, Town = "Town " + i },
                 };
 
                 context.Routes.AddOrUpdate(route);
@@ -80,7 +96,7 @@ namespace CargoSystem.Data.Migrations
 
         private void GenerateOffers(ApplicationDbContext context, int offersToGenerate)
         {
-            var speditors = context.Speditors.OrderBy(c => Guid.NewGuid()).Take(offersToGenerate).ToArray();
+            var speditors = context.Users.OrderBy(c => Guid.NewGuid()).Take(offersToGenerate).ToArray();
             var packages = context.Packages.OrderBy(c => Guid.NewGuid()).Take(offersToGenerate).ToArray();
             var routes = context.Routes.OrderBy(c => Guid.NewGuid()).Take(offersToGenerate).ToArray();
 
@@ -103,7 +119,7 @@ namespace CargoSystem.Data.Migrations
 
         private void GeneratePackages(ApplicationDbContext context, int packagesToGenerate)
         {
-            var speditors = context.Speditors.OrderBy(c => Guid.NewGuid()).Take(packagesToGenerate).ToArray();
+            var speditors = context.Users.OrderBy(c => Guid.NewGuid()).Take(packagesToGenerate).ToArray();
             var countries = context.Countries.OrderBy(c => Guid.NewGuid()).Take(packagesToGenerate).ToArray();
 
             for (int i = 0; i < packagesToGenerate; i++)
@@ -114,14 +130,20 @@ namespace CargoSystem.Data.Migrations
                     SenderAddress = new Address()
                     {
                         Apartment = "Apartment " + i,
-                        Country = countries[i % countries.Length]
+                        Country = countries[i % countries.Length],
+                        Street = "Street " + i,
+                        PostCode = "000" + i,
+                        Town = "Town " + i
                     },
                     Description = "Description of Package " + i,
                     Name = "Package " + i,
                     ReceiverAddress = new Address()
                     {
                         Apartment = "Apartment " + i,
-                        Country = countries[i % countries.Length]
+                        Country = countries[i % countries.Length],
+                        Street = "Street " + i,
+                        PostCode = "000" + i,
+                        Town = "Town " + i
                     },
                     PackageState = PackageState.Shipping
                 };
@@ -134,7 +156,7 @@ namespace CargoSystem.Data.Migrations
 
         private void GenerateVehicles(ApplicationDbContext context, int vehiclesToGenerate)
         {
-            var carriers = context.Carriers.OrderBy(c => Guid.NewGuid()).Take(vehiclesToGenerate).ToArray();
+            var carriers = context.Users.OrderBy(c => Guid.NewGuid()).Take(vehiclesToGenerate).ToArray();
 
             for (int i = 0; i < vehiclesToGenerate; i++)
             {
@@ -152,19 +174,27 @@ namespace CargoSystem.Data.Migrations
 
         private void GenerateCarriers(ApplicationDbContext context, int carriersToGenerate)
         {
-            var password = GeneratePasswordHash("123");
+            var userManager = new UserManager<User>(new UserStore<User>(context));
+            var password = this.GeneratePasswordHash("123");
             for (int i = 0; i < carriersToGenerate; i++)
             {
-                var carrier = new Carrier()
+                var carrier = new User()
                 {
-                    Name = "Carrier " + i.ToString(),
+                    FirstName = "Carrier " + i.ToString(),
+                    MiddleName = "Middle " + i,
+                    LastName = "Speditor " + i,
+                    PhoneNumber = "000" + i,
                     PasswordHash = password,
+                    isCarrier = true,
                     UserName = "carrier" + i + "@abv.bg",
                     Email = "carrier" + i + "@abv.bg",
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
 
-                context.Carriers.AddOrUpdate(carrier);
+                //userManager.Create(carrier, password);
+                context.Users.AddOrUpdate(carrier);
+                context.SaveChanges();
+                userManager.AddToRole(carrier.Id, "Carrier");
             }
 
             context.SaveChanges();
@@ -172,19 +202,27 @@ namespace CargoSystem.Data.Migrations
 
         private void GenerateSpeditors(ApplicationDbContext context, int speditorsToGenerate)
         {
-            var password = GeneratePasswordHash("123");
+            var userManager = new UserManager<User>(new UserStore<User>(context));
+            var password = this.GeneratePasswordHash("123");
             for (int i = 0; i < speditorsToGenerate; i++)
             {
-                var speditor = new Speditor()
+                var speditor = new User()
                 {
-                    Name = "Speditor " + i.ToString(),
-                    PasswordHash = password,
+                    FirstName = "Speditor " + i,
+                    MiddleName = "Middle " + i,
+                    LastName = "Speditor " + i,
+                    PhoneNumber = "000" + i,
                     UserName = "speditor" + i + "@abv.bg",
                     Email = "speditor" + i + "@abv.bg",
+                    PasswordHash = password,
+                    isCarrier = false,
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
 
-                context.Speditors.AddOrUpdate(speditor);
+                //userManager.Create(speditor, password);
+                context.Users.AddOrUpdate(speditor);
+                context.SaveChanges();
+                userManager.AddToRole(speditor.Id, "Speditor");
             }
 
             context.SaveChanges();
