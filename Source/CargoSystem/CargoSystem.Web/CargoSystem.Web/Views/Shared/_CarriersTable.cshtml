@@ -1,0 +1,17 @@
+﻿@model IEnumerable<CargoSystem.Web.ViewModels.Home.CarrierViewModel>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Latest Carriers</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            @foreach (var carrier in Model)
+            {
+                <li class="list-group-item">
+                    <span class="badge" title="Vehicles count">@carrier.VehiclesCount</span>
+                    @carrier.FirstName
+                </li>
+            }
+        </ul>
+    </div>
+</div>

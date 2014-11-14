@@ -4,8 +4,6 @@ namespace CargoSystem.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -24,12 +22,19 @@ namespace CargoSystem.Data.Migrations
                 return;
             }
 
-            //context.Configuration.LazyLoadingEnabled = true;
-
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var userManager = new UserManager<User>(new UserStore<User>(context));
+            if (!roleManager.RoleExists("Admin"))
+            {
+                var role = new IdentityRole() { Name = "Admin" };
+                roleManager.Create(role);
+                var adminUser = new User() { Email = "admin@admin.com", UserName = "admin@admin.com", LastName = "Adminkov", MiddleName = "Adminov", FirstName = "Admincho", PhoneNumber="*88" };
+                userManager.Create(adminUser, "admin1");
+                userManager.AddToRole(adminUser.Id, "Admin");
+            }
             if (!roleManager.RoleExists("Carrier"))
             {
-                var role = new IdentityRole() { Name="Carrier"};
+                var role = new IdentityRole() { Name = "Carrier" };
                 roleManager.Create(role);
             }
             if (!roleManager.RoleExists("Speditor"))
@@ -70,7 +75,7 @@ namespace CargoSystem.Data.Migrations
             {
                 var randomStartDate = this.RandomDay(DateTime.Now);
                 var randomEndDate = this.RandomDay(randomStartDate);
-                var route = new DeclaredRoute()
+                var route = new Route()
                 {
                     Carrier = carriers[i % carriers.Length],
                     Vehicle = vehicles[i % vehicles.Length],

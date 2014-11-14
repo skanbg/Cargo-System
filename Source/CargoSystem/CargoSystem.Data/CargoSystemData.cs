@@ -26,6 +26,37 @@
             get { return this.GetRepository<User>(); }
         }
 
+
+        public IRepository<Package> Packages
+        {
+            get { return this.GetRepository<Package>(); }
+        }
+
+        public IRepository<Offer> Offers
+        {
+            get { return this.GetRepository<Offer>(); }
+        }
+
+        public IRepository<Route> Routes
+        {
+            get { return this.GetRepository<Route>(); }
+        }
+
+        public IRepository<Country> Countries
+        {
+            get { return this.GetRepository<Country>(); }
+        }
+
+        public IRepository<Message> Messages
+        {
+            get { return this.GetRepository<Message>(); }
+        }
+
+        public IRepository<Vehicle> Vehicles
+        {
+            get { return this.GetRepository<Vehicle>(); }
+        }
+
         public DbContext Context
         {
             get

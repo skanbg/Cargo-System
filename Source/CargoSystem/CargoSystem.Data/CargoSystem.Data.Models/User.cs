@@ -15,7 +15,7 @@
     {
         private ICollection<Vehicle> vehicles;
         private ICollection<Offer> offers;
-        private ICollection<DeclaredRoute> routes;
+        private ICollection<Route> routes;
         private ICollection<Offer> proposedOffers;
         private ICollection<Message> messages;
 
@@ -24,7 +24,7 @@
             this.CreatedOn = DateTime.Now;
             this.vehicles = new HashSet<Vehicle>();
             this.offers = new HashSet<Offer>();
-            this.routes = new HashSet<DeclaredRoute>();
+            this.routes = new HashSet<Route>();
             this.proposedOffers = new HashSet<Offer>();
             this.messages = new HashSet<Message>();
         }
@@ -65,7 +65,7 @@
             set { this.offers = value; }
         }
 
-        public virtual ICollection<DeclaredRoute> Routes
+        public virtual ICollection<Route> Routes
         {
             get { return this.routes; }
 

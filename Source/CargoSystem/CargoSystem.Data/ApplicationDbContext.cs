@@ -26,7 +26,7 @@
 
         public IDbSet<Offer> Offers { get; set; }
 
-        public IDbSet<DeclaredRoute> Routes { get; set; }
+        public IDbSet<Route> Routes { get; set; }
 
         public IDbSet<Country> Countries { get; set; }
         
@@ -81,6 +81,7 @@
                 entry.State = EntityState.Modified;
             }
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

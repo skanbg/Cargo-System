@@ -9,10 +9,10 @@
 
     public class Vehicle : IAuditInfo, IDeletableEntity
     {
-        private ICollection<DeclaredRoute> routes;
+        private ICollection<Route> routes;
         public Vehicle()
         {
-            this.routes = new HashSet<DeclaredRoute>();
+            this.routes = new HashSet<Route>();
         }
 
         [Key]
@@ -22,7 +22,7 @@
 
         public virtual TrailerSize Dimensions { get; set; }
 
-        public virtual ICollection<DeclaredRoute> Routes
+        public virtual ICollection<Route> Routes
         {
             get { return this.routes; }
 

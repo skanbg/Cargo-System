@@ -19,11 +19,26 @@
         {
             var model = new IndexViewModel()
             {
-                Carriers = this.homeServices.GetLastRegisteredCarriersViewModel(5),
-                Speditors = this.homeServices.GetLastRegisteredSpeditorsViewModel(5)
+                Routes = this.homeServices.GetLastRoutes(5)
             };
 
             return View(model);
+        }
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 6 * 10 * 60)]
+        public ActionResult Carriers()
+        {
+            var carriers = this.homeServices.GetLastRegisteredCarriersViewModel(5);
+            return this.PartialView("_CarriersTable", carriers);
+        }
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 6 * 10 * 60)]
+        public ActionResult Speditors()
+        {
+            var speditors = this.homeServices.GetLastRegisteredSpeditorsViewModel(5);
+            return this.PartialView("_SpeditorsTable", speditors);
         }
     }
 }

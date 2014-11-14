@@ -6,6 +6,7 @@
     using CargoSystem.Web.Infrastructure.Services.Base;
     using CargoSystem.Web.Infrastructure.Services.Contracts;
     using CargoSystem.Web.ViewModels.Home;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -31,19 +32,34 @@
             return usersViewModel;
         }
 
-        public IList<UserViewModel> GetLastRegisteredSpeditorsViewModel(int numberOfSpeditors)
+        public IList<SpeditorViewModel> GetLastRegisteredSpeditorsViewModel(int numberOfSpeditors)
         {
-            var usersViewModel = this.Data
+            var speditorViewModel = this.Data
              .Users
              .All()
              .Where(u => !u.isCarrier)
              .OrderByDescending(u => u.CreatedOn)
              .Take(numberOfSpeditors)
              .Project()
-             .To<UserViewModel>()
+             .To<SpeditorViewModel>()
              .ToList();
 
-            return usersViewModel;
+            return speditorViewModel;
+        }
+
+        public IList<RouteViewModel> GetLastRoutes(int numberOfRoutes)
+        {
+            var routesViewModel = this.Data
+                .Routes
+            .All()
+            .Where(r=>r.TransportStartDate>DateTime.Now)
+            .OrderByDescending(u => u.CreatedOn)
+            .Take(numberOfRoutes)
+            .Project()
+            .To<RouteViewModel>()
+            .ToList();
+
+            return routesViewModel;
         }
     }
 }

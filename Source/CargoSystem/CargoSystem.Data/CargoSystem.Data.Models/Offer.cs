@@ -16,7 +16,7 @@
 
         public virtual Package Package { get; set; }
 
-        public virtual DeclaredRoute Route { get; set; }
+        public virtual Route Route { get; set; }
 
         public virtual User Speditor { get; set; }
 

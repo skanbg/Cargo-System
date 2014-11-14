@@ -6,11 +6,11 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class DeclaredRoute : IAuditInfo, IDeletableEntity
+    public class Route : IAuditInfo, IDeletableEntity
     {
         private ICollection<Offer> offers;
 
-        public DeclaredRoute()
+        public Route()
         {
             this.offers = new HashSet<Offer>();
         }
