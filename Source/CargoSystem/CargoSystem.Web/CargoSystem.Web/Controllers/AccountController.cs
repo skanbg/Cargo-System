@@ -1,20 +1,16 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using CargoSystem.Data.Models;
-using CargoSystem.Web.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-
-namespace CargoSystem.Web.Controllers
+﻿namespace CargoSystem.Web.Controllers
 {
+    using AutoMapper;
+    using CargoSystem.Data.Models;
+    using CargoSystem.Web.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+
     [Authorize]
     public class AccountController : Controller
     {
@@ -185,7 +181,7 @@ namespace CargoSystem.Web.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Users");
+                    return RedirectToAction("Index", "Home");
                 }
 
                 AddErrors(result);
@@ -425,7 +421,7 @@ namespace CargoSystem.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -463,7 +459,7 @@ namespace CargoSystem.Web.Controllers
                 return Redirect(returnUrl);
             }
 
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

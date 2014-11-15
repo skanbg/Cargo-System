@@ -1,12 +1,10 @@
 ﻿namespace CargoSystem.Data.Models
 {
     using CargoSystem.Data.Common.Models;
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Country : IAuditInfo, IDeletableEntity
+    public class Country : DeletableEntity
     {
         private ICollection<Package> packages;
         private ICollection<User> users;
@@ -32,16 +30,5 @@
 
             set { this.packages = value; }
         }
-
-        [Index]
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
     }
 }

@@ -6,7 +6,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Route : IAuditInfo, IDeletableEntity
+    public class Route : DeletableEntity
     {
         private ICollection<Offer> offers;
 
@@ -36,16 +36,5 @@
 
             set { this.offers = value; }
         }
-
-        [Index]
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
     }
 }

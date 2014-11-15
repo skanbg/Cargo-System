@@ -24,13 +24,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     @if (this.User != null && this.User.IsInRole("Speditor"))
                     {
                         <li>@Html.ActionLink("Offers", "Index", "Offer")</li>
-                    } else if (this.User != null && this.User.IsInRole("Admin"))
+                    }
+                    else if (this.User != null && this.User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Admin area", "Index", "Admin")</li>
+                        <li>@Html.Action("Menu", "Admin", routeValues: new { Area = "Administration" })</li>
                     }
                 </ul>
 
@@ -42,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Cargo System</p>
         </footer>
     </div>
 

@@ -7,7 +7,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public class Vehicle : IAuditInfo, IDeletableEntity
+    public class Vehicle : DeletableEntity
     {
         private ICollection<Route> routes;
         public Vehicle()
@@ -28,16 +28,5 @@
 
             set { this.routes = value; }
         }
-
-        [Index]
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
     }
 }

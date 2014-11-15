@@ -1,0 +1,12 @@
+﻿﻿@model IEnumerable<string>
+@using CargoSystem.Common;
+
+<li class="dropdown close">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="admin-menu">Administration<span class="caret"></span></a>
+    <ul class="dropdown-menu" aria-labelledby="admin-menu">
+        @foreach (var adminName in Model)
+        {
+            <li class="text-center"><a href="/Administration/@adminName">@adminName.PascalCaseToText()</a></li>
+        }
+    </ul>
+</li>

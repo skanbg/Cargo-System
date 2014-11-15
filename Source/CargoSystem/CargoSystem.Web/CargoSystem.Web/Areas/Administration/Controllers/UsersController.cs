@@ -1,16 +1,12 @@
 ﻿namespace CargoSystem.Web.Areas.Administration.Controllers
 {
-    using CargoSystem.Data;
-    using CargoSystem.Web.Areas.Administration.Controllers.Base;
-    using CargoSystem.Web.Infrastructure.Services.Contracts.Admin;
-    using Kendo.Mvc.UI;
-    using Kendo.Mvc.Extensions;
-    using System.Web.Mvc;
-    using System.Linq;
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-    using CargoSystem.Data.Models;
+    using CargoSystem.Data;
     using CargoSystem.Web.Areas.Administration.ViewModels.Users;
+    using CargoSystem.Web.Infrastructure.Services.Contracts.Admin;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
+    using System.Web.Mvc;
 
     public class UsersController : AdminController
     {

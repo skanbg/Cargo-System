@@ -17,13 +17,15 @@
                 columns.Bound(user => user.LastName);
                 columns.Bound(user => user.Email);
                 columns.Bound(user => user.IsCarrier);
-                columns.Command(com => com.Edit());
+                columns.Command(com => com.Edit()).Title("Edit");
+                columns.Command(com => com.Destroy()).Title("Remove");
             })
             .DataSource(data => data
                 .Ajax()
                 .Model(m => m.Id(user => user.Id))
                 .PageSize(5)
                 .Update(update => update.Action("UpdateUser", ControllerName))
+                .Destroy(destroy => destroy.Action("DestroyUser", ControllerName))
                 .Read(read => read.Action("ReadUsers", ControllerName)))
     .Pageable()
     .Editable(edit => edit.Mode(GridEditMode.PopUp))

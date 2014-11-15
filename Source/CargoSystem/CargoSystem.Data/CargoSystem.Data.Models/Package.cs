@@ -6,7 +6,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Package : IAuditInfo, IDeletableEntity
+    public class Package : DeletableEntity
     {
         private ICollection<Offer> offers;
         public Package()
@@ -39,16 +39,5 @@
 
             set { this.offers = value; }
         }
-
-        [Index]
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
     }
 }

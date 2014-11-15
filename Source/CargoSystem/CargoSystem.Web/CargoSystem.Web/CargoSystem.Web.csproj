@@ -192,8 +192,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminController.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Administration\Helpers\AdminMenu.cs" />
+    <Compile Include="Areas\Administration\Helpers\ReflectionHelper.cs" />
     <Compile Include="Areas\Administration\ViewModels\Users\UserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -479,6 +482,7 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AdminMenu.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
     <Content Include="Scripts\bootstrap.js" />
@@ -548,12 +552,18 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Admin\" />
     <Folder Include="Areas\Administration\Views\Base\" />
+    <Folder Include="Areas\Carriers\" />
+    <Folder Include="Areas\Speditors\" />
     <Folder Include="Views\Offer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CargoSystem.Common\CargoSystem.Common.csproj">
+      <Project>{dd6ae1c8-625a-459c-882c-fdef5f0d4ddb}</Project>
+      <Name>CargoSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CargoSystem.Data\CargoSystem.Data.Common\CargoSystem.Data.Common.csproj">
       <Project>{90ceae6c-8eab-459c-9429-1263c5b98013}</Project>
       <Name>CargoSystem.Data.Common</Name>

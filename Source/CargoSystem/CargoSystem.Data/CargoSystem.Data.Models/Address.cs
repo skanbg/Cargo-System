@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Address : IAuditInfo, IDeletableEntity
+    public class Address : DeletableEntity
     {
         [Key]
         public int Id { get; set; }
@@ -24,16 +24,5 @@
 
         //[MaxLength(6)]
         public string PostCode { get; set; }
-
-        [Index]
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
     }
 }
