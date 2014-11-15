@@ -190,7 +190,7 @@ namespace CargoSystem.Data.Migrations
                     LastName = "Speditor " + i,
                     PhoneNumber = "000" + i,
                     PasswordHash = password,
-                    isCarrier = true,
+                    IsCarrier = true,
                     UserName = "carrier" + i + "@abv.bg",
                     Email = "carrier" + i + "@abv.bg",
                     SecurityStamp = Guid.NewGuid().ToString()
@@ -220,7 +220,7 @@ namespace CargoSystem.Data.Migrations
                     UserName = "speditor" + i + "@abv.bg",
                     Email = "speditor" + i + "@abv.bg",
                     PasswordHash = password,
-                    isCarrier = false,
+                    IsCarrier = false,
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
 

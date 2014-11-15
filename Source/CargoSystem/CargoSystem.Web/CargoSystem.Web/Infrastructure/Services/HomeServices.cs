@@ -2,7 +2,6 @@
 {
     using AutoMapper.QueryableExtensions;
     using CargoSystem.Data;
-    using CargoSystem.Data.Models;
     using CargoSystem.Web.Infrastructure.Services.Base;
     using CargoSystem.Web.Infrastructure.Services.Contracts;
     using CargoSystem.Web.ViewModels.Home;
@@ -22,7 +21,7 @@
             var usersViewModel = this.Data
              .Users
              .All()
-             .Where(u => u.isCarrier)
+             .Where(u => u.IsCarrier)
              .OrderByDescending(u => u.CreatedOn)
              .Take(numberOfCarriers)
              .Project()
@@ -37,7 +36,7 @@
             var speditorViewModel = this.Data
              .Users
              .All()
-             .Where(u => !u.isCarrier)
+             .Where(u => !u.IsCarrier)
              .OrderByDescending(u => u.CreatedOn)
              .Take(numberOfSpeditors)
              .Project()

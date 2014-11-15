@@ -78,6 +78,9 @@ namespace CargoSystem.Web.App_Start
             kernel.Bind<ICargoSystemData>().To<CargoSystemData>();
 
             kernel.Bind<IHomeServices>().To<HomeServices>();
+
+            //Administrative area
+            kernel.Bind<CargoSystem.Web.Infrastructure.Services.Contracts.Admin.IHomeServices>().To<CargoSystem.Web.Infrastructure.Services.Admin.HomeServices>();
         }
     }
 }

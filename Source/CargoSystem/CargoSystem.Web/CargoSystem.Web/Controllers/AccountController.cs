@@ -185,7 +185,7 @@ namespace CargoSystem.Web.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Users");
                 }
 
                 AddErrors(result);
@@ -425,7 +425,7 @@ namespace CargoSystem.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Users");
         }
 
         //
@@ -463,7 +463,7 @@ namespace CargoSystem.Web.Controllers
                 return Redirect(returnUrl);
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Users");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

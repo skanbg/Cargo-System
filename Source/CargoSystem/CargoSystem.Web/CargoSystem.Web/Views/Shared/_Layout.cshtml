@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+    @Styles.Render("~/Content/custom")
     <meta name="description" content="Cargo system - Deliver with ease" />
 </head>
 <body>
@@ -22,7 +25,15 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if (this.User != null && this.User.IsInRole("Speditor"))
+                    {
+                        <li>@Html.ActionLink("Offers", "Index", "Offer")</li>
+                    } else if (this.User != null && this.User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Admin area", "Index", "Admin")</li>
+                    }
                 </ul>
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -35,7 +46,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

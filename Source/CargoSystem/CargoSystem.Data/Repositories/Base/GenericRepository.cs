@@ -34,6 +34,11 @@
             return this.DbSet.Find(id);
         }
 
+        public virtual T GetById(string id)
+        {
+            return this.DbSet.Find(id);
+        }
+
         public virtual void Add(T entity)
         {
             DbEntityEntry entry = this.Context.Entry(entity);
@@ -73,6 +78,16 @@
         }
 
         public virtual void Delete(int id)
+        {
+            var entity = this.GetById(id);
+
+            if (entity != null)
+            {
+                this.Delete(entity);
+            }
+        }
+
+        public virtual void Delete(string id)
         {
             var entity = this.GetById(id);
 

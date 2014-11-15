@@ -49,7 +49,7 @@
         [MaxLength(20)]
         public string PhoneNumber { get; set; }
 
-        public bool isCarrier { get; set; }
+        public bool IsCarrier { get; set; }
 
         public virtual ICollection<Vehicle> Vehicles
         {
