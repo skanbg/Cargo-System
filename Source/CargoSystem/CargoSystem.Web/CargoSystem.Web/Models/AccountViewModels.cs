@@ -69,8 +69,8 @@ namespace CargoSystem.Web.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]
@@ -84,9 +84,8 @@ namespace CargoSystem.Web.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [DataType(DataType.Custom)]
         [Display(Name = "Account type")]
-        public bool isCarrier { get; set; }
+        public bool IsCarrier { get; set; }
 
         [Required]
         [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]

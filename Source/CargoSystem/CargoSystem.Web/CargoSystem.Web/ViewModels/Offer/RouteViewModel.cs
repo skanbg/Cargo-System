@@ -1,9 +1,9 @@
 ﻿namespace CargoSystem.Web.ViewModels.Offer
 {
+    using System;
     using AutoMapper;
     using CargoSystem.Data.Models;
     using CargoSystem.Web.Infrastructure.Mapping;
-    using System;
 
     public class RouteViewModel : IMapFrom<Route>, IHaveCustomMappings
     {

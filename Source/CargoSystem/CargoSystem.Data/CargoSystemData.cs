@@ -1,14 +1,12 @@
 ﻿namespace CargoSystem.Data
 {
-    using CargoSystem.Data.Common.Repository;
-    using CargoSystem.Data.Models;
-    using CargoSystem.Data.Repositories.Base;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using CargoSystem.Data.Common.Repository;
+    using CargoSystem.Data.Models;
+    using CargoSystem.Data.Repositories.Base;
 
     public class CargoSystemData : ICargoSystemData
     {
@@ -25,7 +23,6 @@
         {
             get { return this.GetRepository<User>(); }
         }
-
 
         public IRepository<Package> Packages
         {

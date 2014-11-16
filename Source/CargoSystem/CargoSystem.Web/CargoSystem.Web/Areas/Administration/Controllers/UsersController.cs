@@ -21,7 +21,7 @@
         // GET: Administration/Users
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -36,26 +36,26 @@
         [HttpPost]
         public ActionResult UpdateUser([DataSourceRequest]DataSourceRequest request, UserViewModel model)
         {
-            if (model != null && ModelState.IsValid)
+            if (model != null && this.ModelState.IsValid)
             {
                 var user = this.Data.Users.GetById(model.Id);
                 Mapper.Map(model, user);
                 this.Data.SaveChanges();
             }
 
-            return this.Json(new[] { model }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }
 
         [HttpPost]
         public ActionResult DestroyUser([DataSourceRequest]DataSourceRequest request, UserViewModel model)
         {
-            if (model != null && ModelState.IsValid)
+            if (model != null && this.ModelState.IsValid)
             {
                 this.Data.Users.Delete(model.Id);
                 this.Data.SaveChanges();
             }
 
-            return this.Json(new[] { model }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }
     }
 }

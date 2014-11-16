@@ -1,13 +1,10 @@
-﻿using AutoMapper;
-using CargoSystem.Data.Models;
-using CargoSystem.Web.Infrastructure.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace CargoSystem.Web.ViewModels.Home
+﻿namespace CargoSystem.Web.ViewModels.Home
 {
+    using System;
+    using AutoMapper;
+    using CargoSystem.Data.Models;
+    using CargoSystem.Web.Infrastructure.Mapping;
+
     public class RouteViewModel : IMapFrom<Route>, IHaveCustomMappings
     {
         public virtual Address StartPoint { get; set; }

@@ -1,11 +1,10 @@
 ﻿namespace CargoSystem.Data.Repositories.Base
 {
-    using CargoSystem.Data.Common.Repository;
     using System;
-    using System.ComponentModel.DataAnnotations;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
+    using CargoSystem.Data.Common.Repository;
 
     public class GenericRepository<T> : IRepository<T> where T : class
     {

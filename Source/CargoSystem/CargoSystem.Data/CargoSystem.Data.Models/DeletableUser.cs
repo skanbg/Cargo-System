@@ -1,9 +1,9 @@
 ﻿namespace CargoSystem.Data.Models
 {
-    using CargoSystem.Data.Common.Models;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using CargoSystem.Data.Common.Models;
 
     public abstract class DeletableUser : IdentityUser, IDeletableEntity, IAuditInfo
     {

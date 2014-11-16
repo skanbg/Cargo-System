@@ -1,7 +1,7 @@
 ﻿namespace CargoSystem.Data.Models
 {
-    using CargoSystem.Data.Common.Models;
     using System;
+    using CargoSystem.Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 

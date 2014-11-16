@@ -1,11 +1,11 @@
 namespace CargoSystem.Data.Migrations
 {
-    using CargoSystem.Data.Models;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using CargoSystem.Data.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -28,15 +28,17 @@ namespace CargoSystem.Data.Migrations
             {
                 var role = new IdentityRole() { Name = "Admin" };
                 roleManager.Create(role);
-                var adminUser = new User() { Email = "admin@admin.com", UserName = "admin@admin.com", LastName = "Adminkov", MiddleName = "Adminov", FirstName = "Admincho", PhoneNumber="*88" };
+                var adminUser = new User() { Email = "admin@admin.com", UserName = "admin@admin.com", LastName = "Adminkov", MiddleName = "Adminov", FirstName = "Admincho", PhoneNumber = "*88" };
                 userManager.Create(adminUser, "admin1");
                 userManager.AddToRole(adminUser.Id, "Admin");
             }
+
             if (!roleManager.RoleExists("Carrier"))
             {
                 var role = new IdentityRole() { Name = "Carrier" };
                 roleManager.Create(role);
             }
+
             if (!roleManager.RoleExists("Speditor"))
             {
                 var role = new IdentityRole() { Name = "Speditor" };
@@ -196,7 +198,7 @@ namespace CargoSystem.Data.Migrations
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
 
-                //userManager.Create(carrier, password);
+                //this.UserManager.Create(carrier, password);
                 context.Users.AddOrUpdate(carrier);
                 context.SaveChanges();
                 userManager.AddToRole(carrier.Id, "Carrier");
@@ -224,7 +226,7 @@ namespace CargoSystem.Data.Migrations
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
 
-                //userManager.Create(speditor, password);
+                //this.UserManager.Create(speditor, password);
                 context.Users.AddOrUpdate(speditor);
                 context.SaveChanges();
                 userManager.AddToRole(speditor.Id, "Speditor");
@@ -242,14 +244,7 @@ namespace CargoSystem.Data.Migrations
 
         private void GenerateCountries(ApplicationDbContext context, int countriesToGenerate)
         {
-            string[] countryNames = new string[]
-            {
-	        "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla",
-	        "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
-	        "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
-	        "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Bouvet Island",
-	        "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria"
-            };
+            string[] countryNames = new string[] { "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria" };
 
             for (int i = 0; i < countriesToGenerate; i++)
             {

@@ -1,9 +1,9 @@
 ﻿namespace CargoSystem.Web.Controllers
 {
+    using System.Web.Mvc;
     using CargoSystem.Data;
     using CargoSystem.Web.Infrastructure.Services.Contracts;
     using CargoSystem.Web.ViewModels.Home;
-    using System.Web.Mvc;
 
     public class HomeController : BaseController
     {
@@ -22,7 +22,7 @@
                 Routes = this.homeServices.GetLastRoutes(5)
             };
 
-            return View(model);
+            return this.View(model);
         }
 
         [ChildActionOnly]

@@ -1,8 +1,8 @@
 ﻿namespace CargoSystem.Data.Models
 {
-    using CargoSystem.Data.Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using CargoSystem.Data.Common.Models;
 
     public class Country : DeletableEntity
     {

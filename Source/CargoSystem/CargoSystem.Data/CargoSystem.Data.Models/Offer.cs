@@ -1,9 +1,8 @@
 ﻿namespace CargoSystem.Data.Models
 {
-    using CargoSystem.Data.Common.Models;
     using System;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+    using CargoSystem.Data.Common.Models;
 
     public class Offer : DeletableEntity
     {

@@ -1,15 +1,15 @@
 ﻿namespace CargoSystem.Data.Models
 {
-    using CargoSystem.Data.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using CargoSystem.Data.Common.Models;
 
     public class Vehicle : DeletableEntity
     {
         private ICollection<Route> routes;
+
         public Vehicle()
         {
             this.routes = new HashSet<Route>();

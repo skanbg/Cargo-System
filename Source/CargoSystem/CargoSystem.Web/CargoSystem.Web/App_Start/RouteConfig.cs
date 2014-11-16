@@ -17,8 +17,7 @@ namespace CargoSystem.Web
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "CargoSystem.Web.Controllers" }
-            );
+                namespaces: new[] { "CargoSystem.Web.Controllers" });
         }
     }
 }

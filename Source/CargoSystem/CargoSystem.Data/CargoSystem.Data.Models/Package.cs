@@ -1,14 +1,15 @@
 ﻿namespace CargoSystem.Data.Models
 {
-    using CargoSystem.Data.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using CargoSystem.Data.Common.Models;
 
     public class Package : DeletableEntity
     {
         private ICollection<Offer> offers;
+
         public Package()
         {
             this.PackageState = PackageState.WaitingForBargain;

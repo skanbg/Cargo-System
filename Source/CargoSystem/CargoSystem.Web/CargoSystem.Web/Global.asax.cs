@@ -1,10 +1,10 @@
 ﻿namespace CargoSystem.Web
 {
-    using CargoSystem.Web.Infrastructure.Mapping;
     using System.Reflection;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
+    using CargoSystem.Web.Infrastructure.Mapping;
 
     public class MvcApplication : System.Web.HttpApplication
     {

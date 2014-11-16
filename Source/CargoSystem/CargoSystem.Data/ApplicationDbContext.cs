@@ -17,11 +17,6 @@
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-
         public IDbSet<Package> Packages { get; set; }
 
         public IDbSet<Offer> Offers { get; set; }
@@ -33,6 +28,11 @@
         public IDbSet<Message> Messages { get; set; }
 
         public IDbSet<Vehicle> Vehicles { get; set; }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
 
         public override int SaveChanges()
         {

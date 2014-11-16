@@ -1,9 +1,9 @@
 ﻿namespace CargoSystem.Data.Repositories.Base
 {
-    using CargoSystem.Data.Common.Models;
-    using CargoSystem.Data.Common.Repository;
     using System.Data.Entity;
     using System.Linq;
+    using CargoSystem.Data.Common.Models;
+    using CargoSystem.Data.Common.Repository;
 
     public class DeletableEntityRepository<T> : GenericRepository<T>, IDeletableEntityRepository<T>
         where T : class, IDeletableEntity

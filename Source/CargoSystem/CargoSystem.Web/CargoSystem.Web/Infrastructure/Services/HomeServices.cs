@@ -51,7 +51,7 @@
             var routesViewModel = this.Data
                 .Routes
             .All()
-            .Where(r=>r.TransportStartDate>DateTime.Now)
+            .Where(r => r.TransportStartDate > DateTime.Now)
             .OrderByDescending(u => u.CreatedOn)
             .Take(numberOfRoutes)
             .Project()

@@ -2,6 +2,7 @@
 {
     using Microsoft.Owin;
     using Owin;
+
     [assembly: OwinStartupAttribute(typeof(CargoSystem.Web.Startup))]
 
     public partial class Startup

@@ -1,11 +1,11 @@
 ﻿namespace CargoSystem.Data.Models
 {
-    using Microsoft.AspNet.Identity;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
     using System.Threading.Tasks;
+    using Microsoft.AspNet.Identity;
 
     // You can add profile data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : DeletableUser
@@ -44,7 +44,7 @@
         [Required]
         [MinLength(3)]
         [MaxLength(20)]
-        public string PhoneNumber { get; set; }
+        public override string PhoneNumber { get; set; }
 
         public bool IsCarrier { get; set; }
 

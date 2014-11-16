@@ -1,8 +1,8 @@
 ﻿namespace CargoSystem.Data
 {
+    using System.Data.Entity;
     using CargoSystem.Data.Common.Repository;
     using CargoSystem.Data.Models;
-    using System.Data.Entity;
 
     public interface ICargoSystemData
     {

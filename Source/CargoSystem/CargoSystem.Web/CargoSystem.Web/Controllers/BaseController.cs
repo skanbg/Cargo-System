@@ -9,14 +9,14 @@
 
     public class BaseController : Controller
     {
-        protected ICargoSystemData Data { get; private set; }
-
-        protected User UserProfile { get; private set; }
-
         public BaseController(ICargoSystemData data)
         {
             this.Data = data;
         }
+
+        protected ICargoSystemData Data { get; private set; }
+
+        protected User UserProfile { get; private set; }
 
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
         {
