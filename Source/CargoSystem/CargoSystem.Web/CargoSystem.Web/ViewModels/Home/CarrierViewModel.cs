@@ -15,7 +15,7 @@
         public int VehiclesCount { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
-        {
+        { 
             configuration.CreateMap<User, CarrierViewModel>()
             .ForMember(m => m.Email, u => u.MapFrom(t => t.Email))
             .ForMember(m => m.FirstName, u => u.MapFrom(t => t.FirstName))

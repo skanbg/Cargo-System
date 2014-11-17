@@ -22,3 +22,21 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.bar-icon {
+    display: inline-block;
+    font-size: 1.2em;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+    .bar-icon + .badge {
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    a.notification-item span.badge{
+        background-color:#0094ff;
+    }

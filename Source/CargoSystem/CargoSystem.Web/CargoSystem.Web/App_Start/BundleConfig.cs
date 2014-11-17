@@ -26,6 +26,8 @@ namespace CargoSystem.Web
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                 .Include("~/Scripts/Kendo/jquery.min.js"));
             //.Include("~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/unobtrusive-jquery")
+                .Include("~/Scripts/jquery.unobtrusive-ajax.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval")
                 .Include("~/Scripts/jquery.validate*"));

@@ -3,7 +3,7 @@
     using CargoSystem.Web.Areas.Administration.ViewModels.Users;
     using System.Collections.Generic;
 
-    public interface IHomeServices
+    public interface IUserServices
     {
         IList<UserViewModel> GetUsers(int numberOfUsers);
     }

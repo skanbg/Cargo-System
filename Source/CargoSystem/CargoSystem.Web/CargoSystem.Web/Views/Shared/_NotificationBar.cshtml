@@ -1,0 +1,32 @@
+﻿@model CargoSystem.Web.ViewModels.Notification.NotificationsViewModel
+
+<div class="btn-group btn-group-justified">
+    <a href="#" class="btn btn-default notification-item">
+        <span class="glyphicon glyphicon-envelope bar-icon" aria-hidden="true"></span>
+        @if (Model.UnreadMessages > 0)
+        {
+            <span class="badge">@Model.UnreadMessages</span>
+        }
+    </a>
+    <a href="#" class="btn btn-default notification-item">
+        <span class="glyphicon glyphicon-time bar-icon" aria-hidden="true"></span>
+        @if (Model.DelayedDeliveries > 0)
+        {
+            <span class="badge">@Model.DelayedDeliveries</span>
+        }
+    </a>
+    <a href="#" class="btn btn-default notification-item">
+        <span class="glyphicon glyphicon-road bar-icon" aria-hidden="true"></span>
+        @if (Model.StartedDeliveries > 0)
+        {
+            <span class="badge">@Model.StartedDeliveries</span>
+        }
+    </a>
+    <a href="#" class="btn btn-default notification-item">
+        <span class=" glyphicon glyphicon-flag bar-icon" aria-hidden="true"></span>
+        @if (Model.CanceledDeliveries > 0)
+        {
+            <span class="badge">@Model.CanceledDeliveries</span>
+        }
+    </a>
+</div>

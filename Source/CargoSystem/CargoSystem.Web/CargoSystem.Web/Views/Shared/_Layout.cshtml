@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/unobtrusive-jquery")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
     @Styles.Render("~/Content/custom")
@@ -25,11 +26,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    @if (this.User != null && this.User.IsInRole("Speditor"))
+                    @if (this.User != null && this.User.Identity != null && this.User.Identity.IsAuthenticated && this.User.IsInRole(CargoSystem.Common.GlobalConstants.CarrierRoleName))
                     {
-                        <li>@Html.ActionLink("Offers", "Index", "Offer")</li>
-                    }
-                    else if (this.User != null && this.User.IsInRole("Admin"))
+                        <li>@Html.ActionLink("Offers", "Index", "Offer", new { area = "Carrier" }, new { @class = "navbar-brand" })</li>
+                        @*<li>@Html.Action("Index", "Offer", routeValues: new { Area = "Carrier" })</li>*@
+                    }else if (this.User != null && this.User.Identity != null && this.User.Identity.IsAuthenticated && this.User.IsInRole(CargoSystem.Common.GlobalConstants.AdministratorRoleName))
                     {
                         <li>@Html.Action("Menu", "Admin", routeValues: new { Area = "Administration" })</li>
                     }
@@ -39,6 +40,23 @@
             </div>
         </div>
     </div>
+
+    @if (this.User != null && this.User.Identity != null && this.User.Identity.IsAuthenticated)
+    {
+        <div id="notification-bar" class="container"></div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                loadNotifications();
+            });
+
+            function loadNotifications() {
+                $('#notification-bar').load("http://" + window.location.host + "/Notification/LoadBar", function () {
+                    count = setTimeout(loadNotifications, 50000)
+                });
+            }
+        </script>
+    }
+
     <div class="container body-content">
         @RenderBody()
         <hr />

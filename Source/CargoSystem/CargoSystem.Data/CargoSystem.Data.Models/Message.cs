@@ -5,6 +5,11 @@
 
     public class Message : DeletableEntity
     {
+        public Message()
+        {
+            this.MessageStatus = MessageStatus.Unread;
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -23,5 +28,7 @@
         [MaxLength(500)]
         [MinLength(2)]
         public string Body { get; set; }
+
+        public MessageStatus MessageStatus { get; set; }
     }
 }

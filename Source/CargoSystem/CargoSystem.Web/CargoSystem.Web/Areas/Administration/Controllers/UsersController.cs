@@ -2,6 +2,7 @@
 {
     using AutoMapper;
     using CargoSystem.Data;
+    using CargoSystem.Data.Models;
     using CargoSystem.Web.Areas.Administration.ViewModels.Users;
     using CargoSystem.Web.Infrastructure.Services.Contracts.Admin;
     using Kendo.Mvc.Extensions;
@@ -10,9 +11,9 @@
 
     public class UsersController : AdminController
     {
-        private IHomeServices homeServices;
+        private IUserServices homeServices;
 
-        public UsersController(ICargoSystemData data, IHomeServices homeServices)
+        public UsersController(ICsData data, IUserServices homeServices)
             : base(data)
         {
             this.homeServices = homeServices;
@@ -39,7 +40,7 @@
             if (model != null && this.ModelState.IsValid)
             {
                 var user = this.Data.Users.GetById(model.Id);
-                Mapper.Map(model, user);
+                var mappedUser = Mapper.Map<UserViewModel, User>(model, user);
                 this.Data.SaveChanges();
             }
 

@@ -188,8 +188,8 @@ namespace CargoSystem.Data.Migrations
                 var carrier = new User()
                 {
                     FirstName = "Carrier " + i.ToString(),
-                    MiddleName = "Middle " + i,
-                    LastName = "Speditor " + i,
+                    MiddleName = "MiddleName " + i,
+                    LastName = "CLastName " + i,
                     PhoneNumber = "000" + i,
                     PasswordHash = password,
                     IsCarrier = true,

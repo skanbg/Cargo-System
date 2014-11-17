@@ -9,7 +9,7 @@
     {
         private IHomeServices homeServices;
 
-        public HomeController(ICargoSystemData data, IHomeServices homeServices)
+        public HomeController(ICsData data, IHomeServices homeServices)
             : base(data)
         {
             this.homeServices = homeServices;

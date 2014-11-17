@@ -7,7 +7,7 @@
 
     public class AdminController : BaseAdminController
     {
-        public AdminController(ICargoSystemData data)
+        public AdminController(ICsData data)
             : base(data)
         {
         }

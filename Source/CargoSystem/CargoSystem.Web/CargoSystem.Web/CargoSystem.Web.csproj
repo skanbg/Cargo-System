@@ -198,11 +198,20 @@
     <Compile Include="Areas\Administration\Helpers\AdminMenu.cs" />
     <Compile Include="Areas\Administration\Helpers\ReflectionHelper.cs" />
     <Compile Include="Areas\Administration\ViewModels\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Carrier\CarrierAreaRegistration.cs" />
+    <Compile Include="Areas\Carrier\Controllers\Base\CarrierController.cs" />
+    <Compile Include="Areas\Carrier\ViewModels\Offer\AddressViewModel.cs" />
+    <Compile Include="Areas\Carrier\ViewModels\Offer\OfferViewModel.cs" />
+    <Compile Include="Areas\Carrier\ViewModels\Offer\PackageViewModel.cs" />
+    <Compile Include="Areas\Carrier\ViewModels\Offer\RouteViewModel.cs" />
+    <Compile Include="Areas\Carrier\ViewModels\Offer\SpeditorViewModel.cs" />
+    <Compile Include="Areas\Carrier\ViewModels\Offer\VehicleViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OfferController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Areas\Carrier\Controllers\OfferController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,9 +222,11 @@
     <Compile Include="Infrastructure\Services\Base\BaseServices.cs" />
     <Compile Include="Infrastructure\Services\Contracts\Admin\IHomeServices.cs" />
     <Compile Include="Infrastructure\Services\Contracts\IHomeServices.cs" />
-    <Compile Include="Infrastructure\Services\Contracts\IOfferServices.cs" />
+    <Compile Include="Infrastructure\Services\Contracts\INotificationServices.cs" />
+    <Compile Include="Infrastructure\Services\Contracts\Carrier\IOfferServices.cs" />
     <Compile Include="Infrastructure\Services\HomeServices.cs" />
-    <Compile Include="Infrastructure\Services\OfferServices.cs" />
+    <Compile Include="Infrastructure\Services\NotificationServices.cs" />
+    <Compile Include="Infrastructure\Services\Carrier\OfferServices.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -224,8 +235,7 @@
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Home\RouteViewModel.cs" />
     <Compile Include="ViewModels\Home\UserViewModel.cs" />
-    <Compile Include="ViewModels\Offer\CarrierViewModel.cs" />
-    <Compile Include="ViewModels\Offer\RouteViewModel.cs" />
+    <Compile Include="ViewModels\Notification\NotificationsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -453,6 +463,8 @@
     <Content Include="Content\Kendo\Uniform\slider-v.gif" />
     <Content Include="Content\Kendo\Uniform\sprite.png" />
     <Content Include="Content\Kendo\Uniform\sprite_2x.png" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -483,6 +495,26 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_AdminMenu.cshtml" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="Areas\Carrier\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Carrier\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Carrier\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Carrier\Views\Offer\Index.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Url.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
     <Content Include="Scripts\bootstrap.js" />
@@ -491,6 +523,8 @@
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -504,6 +538,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -547,13 +583,14 @@
     <Content Include="Scripts\Kendo\jquery.min.map" />
     <Content Include="Scripts\Kendo\kendo.all.min.js.map" />
     <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js.map" />
+    <Content Include="Views\Shared\_NotificationBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Admin\" />
     <Folder Include="Areas\Administration\Views\Base\" />
-    <Folder Include="Areas\Carriers\" />
-    <Folder Include="Areas\Speditors\" />
+    <Folder Include="Areas\Speditor\" />
+    <Folder Include="Views\Notification\" />
     <Folder Include="Views\Offer\" />
   </ItemGroup>
   <ItemGroup>

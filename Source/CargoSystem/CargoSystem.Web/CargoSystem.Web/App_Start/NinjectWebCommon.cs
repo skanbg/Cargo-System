@@ -16,6 +16,7 @@ namespace CargoSystem.Web.App_Start
     using CargoSystem.Data.Repositories.Base;
     using CargoSystem.Web.Infrastructure.Services.Contracts;
     using CargoSystem.Web.Infrastructure.Services;
+    using CargoSystem.Web.Infrastructure.Services.Contracts.Carrier;
 
     public static class NinjectWebCommon
     {
@@ -67,20 +68,20 @@ namespace CargoSystem.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            //Data repos
             kernel.Bind<DbContext>().To<ApplicationDbContext>();
-
-            kernel.Bind(typeof(IDeletableEntityRepository<>))
-                .To(typeof(DeletableEntityRepository<>));
-
-            kernel.Bind(typeof(IRepository<>))
-                .To(typeof(GenericRepository<>));
-
+            kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
+            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
             kernel.Bind<ICargoSystemData>().To<CargoSystemData>();
+            kernel.Bind<ICsData>().To<CSData>();
 
+            //Services
             kernel.Bind<IHomeServices>().To<HomeServices>();
+            kernel.Bind<INotificationServices>().To<NotificationServices>();
+            kernel.Bind<IOfferServices>().To<OfferServices>();
 
             //Administrative area
-            kernel.Bind<CargoSystem.Web.Infrastructure.Services.Contracts.Admin.IHomeServices>().To<CargoSystem.Web.Infrastructure.Services.Admin.HomeServices>();
+            kernel.Bind<CargoSystem.Web.Infrastructure.Services.Contracts.Admin.IUserServices>().To<CargoSystem.Web.Infrastructure.Services.Admin.UserServices>();
         }
     }
 }

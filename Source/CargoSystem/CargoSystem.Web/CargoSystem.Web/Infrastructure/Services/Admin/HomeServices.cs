@@ -8,9 +8,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class HomeServices : BaseServices, IHomeServices
+    public class UserServices : BaseServices, IUserServices
     {
-        public HomeServices(ICargoSystemData data)
+        public UserServices(ICargoSystemData data)
             : base(data)
         {
         }

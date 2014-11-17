@@ -6,7 +6,7 @@
     using CargoSystem.Web.Infrastructure.Mapping;
 
     public class RouteViewModel : IMapFrom<Route>, IHaveCustomMappings
-    {
+    { 
         public virtual Address StartPoint { get; set; }
 
         public virtual Address EndPoint { get; set; }

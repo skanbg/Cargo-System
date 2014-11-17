@@ -3,6 +3,7 @@
     using AutoMapper;
     using CargoSystem.Data.Models;
     using CargoSystem.Web.Infrastructure.Mapping;
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class UserViewModel : IMapFrom<User>, IHaveCustomMappings
@@ -20,6 +21,10 @@
 
         public bool IsCarrier { get; set; }
 
+        [DataType(DataType.Date)]
+        [ScaffoldColumn(false)]
+        public DateTime CreatedOn { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<User, UserViewModel>()
@@ -29,6 +34,7 @@
             .ForMember(m => m.MiddleName, u => u.MapFrom(t => t.MiddleName))
             .ForMember(m => m.LastName, u => u.MapFrom(t => t.LastName))
             .ForMember(m => m.IsCarrier, u => u.MapFrom(t => t.IsCarrier))
+            .ForMember(m => m.CreatedOn, u => u.MapFrom(t => t.CreatedOn))
             .ReverseMap();
         }
     }

@@ -1,0 +1,58 @@
+﻿@using CargoSystem.Web.Areas.Carrier.ViewModels.Offer
+@{
+    ViewBag.Title = "Users Administration";
+    const string ControllerName = "Offer";
+}
+
+<h2>Navigation</h2>
+
+@(Html
+    .Kendo()
+    .Grid<OfferViewModel>()
+    .Name("grid")
+            .Columns(columns =>
+            {
+                columns.Bound(offer => offer.Speditor.FirstName);
+                columns.Bound(offer => offer.Speditor.MiddleName);
+                columns.Bound(offer => offer.Speditor.LastName);
+                columns.Bound(offer => offer.OfferStatus);
+                columns.Bound(offer => offer.Package.ReceiverAddress).ClientTemplate(
+                    "#= Package.ReceiverAddress.Apartment #, " +
+                    "#= Package.ReceiverAddress.Street #, " +
+                    "#= Package.ReceiverAddress.Town #, " +
+                    "#= Package.ReceiverAddress.CountryName #"
+                );
+                columns.Bound(offer => offer.Package.SenderAddress).ClientTemplate(
+                    "#= Package.ReceiverAddress.Apartment #, " +
+                    "#= Package.ReceiverAddress.Street #, " +
+                    "#= Package.ReceiverAddress.Town #, " +
+                    "#= Package.ReceiverAddress.CountryName #"
+                );
+                columns.Bound(offer => offer.Package.Name);
+                columns.Bound(offer => offer.Package.Description);
+                //columns.Bound(offer => new { date = offer.Route.TransportStartDate.ToString() }.date).ClientTemplate("#= kendo.format('{0:dd.MM.yyyy}', kendo.parseDate(Route.TransportStartDate)) #");
+                //columns.Bound<DateTime>(offer => offer.Route.TransportEndDate).ClientTemplate("#= kendo.format('{0:dd.MM.yyyy}', kendo.parseDate(Route.TransportStartDate)) #");
+                columns.Command(com => com.Edit()).Title("Edit");
+                columns.Command(com => com.Destroy()).Title("Remove");
+            })
+    .DataSource(data => data
+    .Ajax()
+    .Filter(filters =>
+    {
+        filters.Add(offer => offer.OfferStatus).IsNotEqualTo(CargoSystem.Data.Models.OfferStatus.Rejected);
+    })
+        .Model(model =>
+                {
+                    model.Id(offer => offer.Id);
+                })
+    .PageSize(5)
+    .Update(update => update.Action("UpdateOffer", ControllerName))
+    .Destroy(destroy => destroy.Action("DestroyOffer", ControllerName))
+    .Read(read => read.Action("ReadOffers", ControllerName)))
+    .Pageable(pager => pager.Refresh(true))
+        .Editable(edit => edit.Mode(GridEditMode.PopUp))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .Groupable()
+)

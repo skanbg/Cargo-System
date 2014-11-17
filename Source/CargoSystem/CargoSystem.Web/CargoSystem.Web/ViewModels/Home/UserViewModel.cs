@@ -6,7 +6,7 @@
     using System.Linq;
 
     public class SpeditorViewModel : IMapFrom<User>, IHaveCustomMappings
-    {
+    { 
         public string Email { get; set; }
 
         public string FirstName { get; set; }

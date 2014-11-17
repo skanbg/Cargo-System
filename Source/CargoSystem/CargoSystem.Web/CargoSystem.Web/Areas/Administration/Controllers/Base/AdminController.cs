@@ -9,7 +9,7 @@
     [ValidateInput(false)]
     public abstract class BaseAdminController : BaseController
     {
-        public BaseAdminController(ICargoSystemData data)
+        public BaseAdminController(ICsData data)
             : base(data)
         {
         }

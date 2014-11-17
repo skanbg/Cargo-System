@@ -2,9 +2,10 @@
 @{
     ViewBag.Title = "Users Administration";
     const string ControllerName = "Users";
+    var culture = System.Globalization.CultureInfo.CurrentCulture.ToString();
 }
 
-<h2>Navigation</h2>
+<h2>Users Administration</h2>
 
 @(Html
     .Kendo()
@@ -15,6 +16,7 @@
                 columns.Bound(user => user.FirstName);
                 columns.Bound(user => user.MiddleName);
                 columns.Bound(user => user.LastName);
+                columns.Bound(user => user.CreatedOn);
                 columns.Bound(user => user.Email);
                 columns.Bound(user => user.IsCarrier);
                 columns.Command(com => com.Edit()).Title("Edit");
@@ -27,9 +29,14 @@
                 .Update(update => update.Action("UpdateUser", ControllerName))
                 .Destroy(destroy => destroy.Action("DestroyUser", ControllerName))
                 .Read(read => read.Action("ReadUsers", ControllerName)))
-    .Pageable()
+    .Pageable(pager => pager.Refresh(true))
     .Editable(edit => edit.Mode(GridEditMode.PopUp))
     .Sortable()
     .Filterable()
     .Groupable()
 )
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="http://cdn.kendostatic.com/2013.2.716/js/cultures/kendo.culture.en-US.min.js"></script>
+}

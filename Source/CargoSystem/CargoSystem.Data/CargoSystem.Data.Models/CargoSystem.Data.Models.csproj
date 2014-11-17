@@ -55,6 +55,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="DeletableUser.cs" />
+    <Compile Include="MessageStatus.cs" />
     <Compile Include="Route.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Offer.cs" />
