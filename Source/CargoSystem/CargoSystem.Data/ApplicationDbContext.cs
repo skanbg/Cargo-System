@@ -24,10 +24,12 @@
         public IDbSet<Route> Routes { get; set; }
 
         public IDbSet<Country> Countries { get; set; }
-        
+
         public IDbSet<Message> Messages { get; set; }
 
         public IDbSet<Vehicle> Vehicles { get; set; }
+
+        public IDbSet<Feedback> Feedbacks { get; set; }
 
         public static ApplicationDbContext Create()
         {

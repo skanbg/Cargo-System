@@ -79,6 +79,7 @@ namespace CargoSystem.Web.App_Start
             kernel.Bind<IHomeServices>().To<HomeServices>();
             kernel.Bind<INotificationServices>().To<NotificationServices>();
             kernel.Bind<IOfferServices>().To<OfferServices>();
+            kernel.Bind<IMessageServices>().To<MessageServices>();
 
             //Administrative area
             kernel.Bind<CargoSystem.Web.Infrastructure.Services.Contracts.Admin.IUserServices>().To<CargoSystem.Web.Infrastructure.Services.Admin.UserServices>();

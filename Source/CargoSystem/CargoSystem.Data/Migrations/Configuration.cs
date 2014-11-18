@@ -187,9 +187,9 @@ namespace CargoSystem.Data.Migrations
             {
                 var carrier = new User()
                 {
-                    FirstName = "Carrier " + i.ToString(),
-                    MiddleName = "MiddleName " + i,
-                    LastName = "CLastName " + i,
+                    FirstName = "Carrier" + i.ToString(),
+                    MiddleName = "Middle" + i,
+                    LastName = "Last" + i,
                     PhoneNumber = "000" + i,
                     PasswordHash = password,
                     IsCarrier = true,
@@ -215,9 +215,9 @@ namespace CargoSystem.Data.Migrations
             {
                 var speditor = new User()
                 {
-                    FirstName = "Speditor " + i,
-                    MiddleName = "Middle " + i,
-                    LastName = "Speditor " + i,
+                    FirstName = "Speditor" + i,
+                    MiddleName = "Middle" + i,
+                    LastName = "Last" + i,
                     PhoneNumber = "000" + i,
                     UserName = "speditor" + i + "@abv.bg",
                     Email = "speditor" + i + "@abv.bg",

@@ -15,6 +15,8 @@
         private ICollection<Route> routes;
         private ICollection<Offer> proposedOffers;
         private ICollection<Message> messages;
+        private ICollection<Notification> notifications;
+        private ICollection<Feedback> feedbacks;
 
         public User()
         {
@@ -24,6 +26,8 @@
             this.routes = new HashSet<Route>();
             this.proposedOffers = new HashSet<Offer>();
             this.messages = new HashSet<Message>();
+            this.notifications = new HashSet<Notification>();
+            this.feedbacks = new HashSet<Feedback>();
         }
 
         [Required]
@@ -47,6 +51,13 @@
         public override string PhoneNumber { get; set; }
 
         public bool IsCarrier { get; set; }
+
+        public virtual ICollection<Notification> Notifications
+        {
+            get { return this.notifications; }
+
+            set { this.notifications = value; }
+        }
 
         public virtual ICollection<Vehicle> Vehicles
         {
@@ -81,6 +92,13 @@
             get { return this.messages; }
 
             set { this.messages = value; }
+        }
+
+        public virtual ICollection<Feedback> Feedbacks
+        {
+            get { return this.feedbacks; }
+
+            set { this.feedbacks = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

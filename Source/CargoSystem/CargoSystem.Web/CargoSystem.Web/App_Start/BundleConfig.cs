@@ -39,19 +39,27 @@ namespace CargoSystem.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
                 .Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/toastr", "http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js")
+                            .Include("~/Scripts/toastr.js"));
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/bootstrap.lumen.css"));
+
             bundles.Add(new StyleBundle("~/Content/Kendo/Source")
                 .Include(
                 "~/Content/Kendo/kendo.common.min.css",
                 "~/Content/Kendo/kendo.common-bootstrap.min.css",
                 "~/Content/Kendo/kendo.silver.min.css"));
+
             bundles.Add(new StyleBundle("~/Content/custom")
                 .Include("~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/content/toastr", "http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css")
+                .Include("~/Content/toastr.css"));
         }
     }
 }

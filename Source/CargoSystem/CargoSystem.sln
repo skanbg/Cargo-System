@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{0A9DA2F4-CF1C-4FD8-A33A-24EF0A94603E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{9CC83178-163F-4206-B567-83591F210E1C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{D52F54B3-0937-430B-9E41-1371147F54F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoSystem.Common", "CargoSystem.Common\CargoSystem.Common.csproj", "{DD6AE1C8-625A-459C-882C-FDEF5F0D4DDB}"
 EndProject
@@ -15,13 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoSystem.Data", "CargoSy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoSystem.Data.Models", "CargoSystem.Data\CargoSystem.Data.Models\CargoSystem.Data.Models.csproj", "{95F2EE85-2433-48CD-B2C0-91908307DF09}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{349830A3-E1F0-474F-A281-227E1D1ADA06}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoSystem.Web", "CargoSystem.Web\CargoSystem.Web\CargoSystem.Web.csproj", "{FD7EECFA-C1E7-43AE-8E7E-AA6757B9BE2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoSystem.Data.Common", "CargoSystem.Data\CargoSystem.Data.Common\CargoSystem.Data.Common.csproj", "{90CEAE6C-8EAB-459C-9429-1263C5B98013}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{78F7C385-4F5B-45A2-BBD7-A39D245FEF7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

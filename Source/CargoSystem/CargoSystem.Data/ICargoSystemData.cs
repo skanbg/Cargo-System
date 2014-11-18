@@ -22,6 +22,10 @@
 
         IRepository<Vehicle> Vehicles { get; }
 
+        IRepository<Notification> Notifications { get; }
+
+        IRepository<Feedback> Feedbacks { get; }
+
         void Dispose();
 
         int SaveChanges();

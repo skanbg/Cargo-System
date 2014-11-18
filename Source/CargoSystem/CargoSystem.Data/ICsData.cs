@@ -6,7 +6,7 @@
     using System;
     using System.Data.Entity;
 
-    public interface ICsData: IDisposable
+    public interface ICsData : IDisposable
     {
         DbContext Context { get; }
 
@@ -23,6 +23,10 @@
         IDeletableEntityRepository<Message> Messages { get; }
 
         IDeletableEntityRepository<Vehicle> Vehicles { get; }
+
+        IDeletableEntityRepository<Notification> Notifications { get; }
+
+        IDeletableEntityRepository<Feedback> Feedbacks { get; }
 
         void Dispose();
 

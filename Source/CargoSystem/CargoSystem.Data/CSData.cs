@@ -55,6 +55,16 @@
             get { return this.GetDeletableEntityRepository<Vehicle>(); }
         }
 
+        public IDeletableEntityRepository<Notification> Notifications
+        {
+            get { return this.GetDeletableEntityRepository<Notification>(); }
+        }
+
+        public IDeletableEntityRepository<Feedback> Feedbacks
+        {
+            get { return this.GetDeletableEntityRepository<Feedback>(); }
+        }
+
         public DbContext Context
         {
             get

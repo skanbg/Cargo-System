@@ -54,6 +54,16 @@
             get { return this.GetRepository<Vehicle>(); }
         }
 
+        public IRepository<Notification> Notifications
+        {
+            get { return this.GetRepository<Notification>(); }
+        }
+
+        public IRepository<Feedback> Feedbacks
+        {
+            get { return this.GetRepository<Feedback>(); }
+        }
+
         public DbContext Context
         {
             get

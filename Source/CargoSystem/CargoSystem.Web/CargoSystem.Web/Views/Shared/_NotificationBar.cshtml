@@ -1,7 +1,7 @@
 ﻿@model CargoSystem.Web.ViewModels.Notification.NotificationsViewModel
 
 <div class="btn-group btn-group-justified">
-    <a href="#" class="btn btn-default notification-item">
+    <a href="/Message/All" class="btn btn-default notification-item">
         <span class="glyphicon glyphicon-envelope bar-icon" aria-hidden="true"></span>
         @if (Model.UnreadMessages > 0)
         {
@@ -30,3 +30,4 @@
         }
     </a>
 </div>
+@Html.Partial("_Toastr")

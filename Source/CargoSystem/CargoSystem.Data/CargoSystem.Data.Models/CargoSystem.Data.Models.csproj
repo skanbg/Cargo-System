@@ -55,7 +55,10 @@
     <Compile Include="Address.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="DeletableUser.cs" />
+    <Compile Include="Feedback.cs" />
     <Compile Include="MessageStatus.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="NotificationType.cs" />
     <Compile Include="Route.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Offer.cs" />

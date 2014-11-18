@@ -8,11 +8,13 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/unobtrusive-jquery")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/toastr")
+    @Scripts.Render("~/bundles/toastr")
     @RenderSection("styles", required: false)
     @Styles.Render("~/Content/custom")
     <meta name="description" content="Cargo system - Deliver with ease" />
 </head>
-<body>
+<body>    
     <div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -29,11 +31,12 @@
                     @if (this.User != null && this.User.Identity != null && this.User.Identity.IsAuthenticated && this.User.IsInRole(CargoSystem.Common.GlobalConstants.CarrierRoleName))
                     {
                         <li>@Html.ActionLink("Offers", "Index", "Offer", new { area = "Carrier" }, new { @class = "navbar-brand" })</li>
-                        @*<li>@Html.Action("Index", "Offer", routeValues: new { Area = "Carrier" })</li>*@
-                    }else if (this.User != null && this.User.Identity != null && this.User.Identity.IsAuthenticated && this.User.IsInRole(CargoSystem.Common.GlobalConstants.AdministratorRoleName))
+                    }
+                    else if (this.User != null && this.User.Identity != null && this.User.Identity.IsAuthenticated && this.User.IsInRole(CargoSystem.Common.GlobalConstants.AdministratorRoleName))
                     {
                         <li>@Html.Action("Menu", "Admin", routeValues: new { Area = "Administration" })</li>
                     }
+                    <li>@Html.ActionLink("Feedback", "Create", "Feedback", new { area = "" }, null)</li>
                 </ul>
 
                 @Html.Partial("_LoginPartial")
@@ -51,7 +54,7 @@
 
             function loadNotifications() {
                 $('#notification-bar').load("http://" + window.location.host + "/Notification/LoadBar", function () {
-                    count = setTimeout(loadNotifications, 50000)
+                    count = setTimeout(loadNotifications, 5000)
                 });
             }
         </script>

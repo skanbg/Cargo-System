@@ -1,4 +1,5 @@
-﻿namespace CargoSystem.Web.ViewModels.Notification
+﻿using System.Collections.Generic;
+namespace CargoSystem.Web.ViewModels.Notification
 {
     public class NotificationsViewModel
     {

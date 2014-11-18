@@ -194,12 +194,16 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminController.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
+    <Compile Include="Areas\Administration\Controllers\FeedbacksController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\Helpers\AdminMenu.cs" />
     <Compile Include="Areas\Administration\Helpers\ReflectionHelper.cs" />
     <Compile Include="Areas\Administration\ViewModels\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Feedbacks\FeedbackViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Feedbacks\IndexViewModel.cs" />
     <Compile Include="Areas\Carrier\CarrierAreaRegistration.cs" />
     <Compile Include="Areas\Carrier\Controllers\Base\CarrierController.cs" />
+    <Compile Include="Areas\Carrier\Controllers\RoutesController.cs" />
     <Compile Include="Areas\Carrier\ViewModels\Offer\AddressViewModel.cs" />
     <Compile Include="Areas\Carrier\ViewModels\Offer\OfferViewModel.cs" />
     <Compile Include="Areas\Carrier\ViewModels\Offer\PackageViewModel.cs" />
@@ -208,13 +212,18 @@
     <Compile Include="Areas\Carrier\ViewModels\Offer\VehicleViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Areas\Carrier\Controllers\OfferController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Helpers\Toastr\ControllerExtensions\ControllerExtensions.cs" />
+    <Compile Include="Infrastructure\Helpers\Toastr\ToastMessage.cs" />
+    <Compile Include="Infrastructure\Helpers\Toastr\Toastr.cs" />
     <Compile Include="Infrastructure\Mapping\AutoMapperConfig.cs" />
     <Compile Include="Infrastructure\Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
@@ -222,11 +231,14 @@
     <Compile Include="Infrastructure\Services\Base\BaseServices.cs" />
     <Compile Include="Infrastructure\Services\Contracts\Admin\IHomeServices.cs" />
     <Compile Include="Infrastructure\Services\Contracts\IHomeServices.cs" />
+    <Compile Include="Infrastructure\Services\Contracts\IMessageServices.cs" />
     <Compile Include="Infrastructure\Services\Contracts\INotificationServices.cs" />
     <Compile Include="Infrastructure\Services\Contracts\Carrier\IOfferServices.cs" />
     <Compile Include="Infrastructure\Services\HomeServices.cs" />
+    <Compile Include="Infrastructure\Services\MessageServices.cs" />
     <Compile Include="Infrastructure\Services\NotificationServices.cs" />
     <Compile Include="Infrastructure\Services\Carrier\OfferServices.cs" />
+    <Compile Include="InputModels\Feedback\FeedbackInputModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -235,6 +247,9 @@
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Home\RouteViewModel.cs" />
     <Compile Include="ViewModels\Home\UserViewModel.cs" />
+    <Compile Include="ViewModels\Message\AutocompleteUserView.cs" />
+    <Compile Include="ViewModels\Message\MessageViewModel.cs" />
+    <Compile Include="ViewModels\Notification\NotificationMessageViewModel.cs" />
     <Compile Include="ViewModels\Notification\NotificationsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -515,6 +530,7 @@
     <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Areas\Carrier\Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Areas\Administration\Views\Feedbacks\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
     <Content Include="Scripts\bootstrap.js" />
@@ -584,11 +600,17 @@
     <Content Include="Scripts\Kendo\kendo.all.min.js.map" />
     <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js.map" />
     <Content Include="Views\Shared\_NotificationBar.cshtml" />
+    <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Message\All.cshtml" />
+    <Content Include="App_Code\ToastrBuilder.cshtml" />
+    <Content Include="Views\Shared\_Toastr.cshtml" />
+    <Content Include="Views\Feedback\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Admin\" />
     <Folder Include="Areas\Administration\Views\Base\" />
+    <Folder Include="Areas\Carrier\Views\Routes\" />
     <Folder Include="Areas\Speditor\" />
     <Folder Include="Views\Notification\" />
     <Folder Include="Views\Offer\" />
